@@ -1,0 +1,84 @@
+﻿body {
+   
+}
+
+
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+#header {
+    background-image:url('../../Content/Themes/asiTakipTheme/banner.png'); 
+    width:1000px;
+    height:138px;
+}
+
+#yanMenu{
+    float:left;
+    padding:0;
+    margin: 0;
+    list-style:none;
+    font-family: Verdana,Arial,Arial, Helvetica, sans-serif;
+    background-color: #6dc7dc;
+}
+
+#yanMenu .yanMenuListe {
+    left: 0px;
+    top: 0px;
+   /* width: 170px; */
+   height:475px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    background-color: #EEEEDC;
+}
+
+#yanMenu .yanMenuListe li {
+    border-bottom: 1px solid #6F3E04;
+    border-left: 1px solid #6F3E04;
+    border-right: 1px solid #6F3E04;
+}
+
+#yanMenu .yanMenuListe li a{
+    text-decoration: none;
+    display:block;
+    width: 176px;
+    color: #333333;
+    font-weight: bold;
+    padding: 2px 10px;
+}
+
+#yanMenu .yanMenuListe li a:hover {
+    background-color: #91aaae;
+    color: #eeeedc;
+}
+
+#footer
+{
+   
+    width: 1000px;
+    clear: both;
+    height: 30px;
+    background-color: #467988;
+    color: White;
+    text-align: center;
+    font-size: 0.9em;
+    font-weight: bold;
+    line-height: 31px;
+}
+
+#footer a{
+        color: White;
+    text-decoration: none;
+}

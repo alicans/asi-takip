@@ -1,0 +1,35 @@
+﻿@model MVC_Son.Models.AsiStok
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AsiStok</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Stok)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Stok)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Asi.AsiAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Asi.AsiAdi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AsiStokId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

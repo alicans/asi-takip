@@ -1,0 +1,35 @@
+﻿@model MVC_Son.Models.HastaAsi
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>HastaAsi</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Asi.AsiAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Asi.AsiAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hastalar.TCNO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hastalar.TCNO)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.HastaAsiId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,67 @@
+﻿@model MVC_Son.Models.Hastalar
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Hastalar</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TCNO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TCNO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HastaAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HastaAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HastaSoyadi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HastaSoyadi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HastaDtar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HastaDtar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HastaBoy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HastaBoy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HastaKilo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HastaKilo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.HastaId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

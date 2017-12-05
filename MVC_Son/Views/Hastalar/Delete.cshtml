@@ -1,0 +1,71 @@
+﻿@model MVC_Son.Models.Hastalar
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Kayıt Sil</h2>
+
+<h3>Aşağıda bilgileri yazılı hasta silinecek. Emin Misiniz?</h3>
+<div>
+    <dl >
+        <dt>
+            @Html.DisplayNameFor(model => model.TCNO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TCNO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HastaAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HastaAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HastaSoyadi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HastaSoyadi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HastaDtar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HastaDtar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HastaBoy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HastaBoy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HastaKilo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HastaKilo)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Silmeyi Onayla" class="btn btn-default" /> |
+            @Html.ActionLink("Geri Dön", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,63 @@
+﻿@model IEnumerable<MVC_Son.Models.Hastalar>
+
+@{
+    ViewBag.Title = "Hastalar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Hastalar</h2>
+
+<p>
+    @Html.ActionLink("Yeni Hasta Kaydı", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TCNO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HastaAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HastaSoyadi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HastaDtar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HastaBoy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HastaKilo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TCNO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HastaAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HastaSoyadi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HastaDtar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HastaBoy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HastaKilo)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id=item.HastaId }) |
+            @Html.ActionLink("Sil", "Delete", new { id=item.HastaId })
+        </td>
+    </tr>
+}
+
+</table>

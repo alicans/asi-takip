@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AsiTakipDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Asi">
+    <Key>
+      <PropertyRef Name="AsiId" />
+    </Key>
+    <Property Name="AsiId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AsiAdi" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="AsiStok">
+    <Key>
+      <PropertyRef Name="AsiStokId" />
+    </Key>
+    <Property Name="AsiStokId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AsiId" Type="int" Nullable="false" />
+    <Property Name="Stok" Type="int" />
+  </EntityType>
+  <EntityType Name="HastaAsi">
+    <Key>
+      <PropertyRef Name="HastaAsiId" />
+    </Key>
+    <Property Name="HastaAsiId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HastaId" Type="int" Nullable="false" />
+    <Property Name="AsiId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Hastalar">
+    <Key>
+      <PropertyRef Name="HastaId" />
+    </Key>
+    <Property Name="HastaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TCNO" Type="nvarchar" MaxLength="11" Nullable="false" />
+    <Property Name="HastaAdi" Type="nvarchar" MaxLength="50" />
+    <Property Name="HastaSoyadi" Type="nvarchar" MaxLength="50" />
+    <Property Name="HastaDtar" Type="date" />
+    <Property Name="HastaBoy" Type="int" />
+    <Property Name="HastaKilo" Type="int" />
+  </EntityType>
+  <Association Name="FK_AsiStok_ToAsi">
+    <End Role="Asi" Type="Self.Asi" Multiplicity="1" />
+    <End Role="AsiStok" Type="Self.AsiStok" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Asi">
+        <PropertyRef Name="AsiId" />
+      </Principal>
+      <Dependent Role="AsiStok">
+        <PropertyRef Name="AsiId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HastaAsi_ToAsi">
+    <End Role="Asi" Type="Self.Asi" Multiplicity="1" />
+    <End Role="HastaAsi" Type="Self.HastaAsi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Asi">
+        <PropertyRef Name="AsiId" />
+      </Principal>
+      <Dependent Role="HastaAsi">
+        <PropertyRef Name="AsiId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HastaAsi_ToHastalar">
+    <End Role="Hastalar" Type="Self.Hastalar" Multiplicity="1" />
+    <End Role="HastaAsi" Type="Self.HastaAsi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hastalar">
+        <PropertyRef Name="HastaId" />
+      </Principal>
+      <Dependent Role="HastaAsi">
+        <PropertyRef Name="HastaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AsiTakipDBModelStoreContainer">
+    <EntitySet Name="Asi" EntityType="Self.Asi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AsiStok" EntityType="Self.AsiStok" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HastaAsi" EntityType="Self.HastaAsi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Hastalar" EntityType="Self.Hastalar" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_AsiStok_ToAsi" Association="Self.FK_AsiStok_ToAsi">
+      <End Role="Asi" EntitySet="Asi" />
+      <End Role="AsiStok" EntitySet="AsiStok" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HastaAsi_ToAsi" Association="Self.FK_HastaAsi_ToAsi">
+      <End Role="Asi" EntitySet="Asi" />
+      <End Role="HastaAsi" EntitySet="HastaAsi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HastaAsi_ToHastalar" Association="Self.FK_HastaAsi_ToHastalar">
+      <End Role="Hastalar" EntitySet="Hastalar" />
+      <End Role="HastaAsi" EntitySet="HastaAsi" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

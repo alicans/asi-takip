@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Aşı Takip Sistemi</h2>
+<p>Aşı Takip Sistemi'ne hoşgeldiniz.</p>
+
+
+    @using Microsoft.AspNet.Identity
+    @if (Request.IsAuthenticated)
+    {
+        @Html.ActionLink("Hoşgeldiniz, " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+        {
+            @Html.AntiForgeryToken()
+            <a href="javascript:document.getElementById('logoutForm').submit()">Çıkış Yap</a>
+        }
+    }
+    else
+    { @Html.ActionLink("Giriş Yapınız.", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })}
+
+
+

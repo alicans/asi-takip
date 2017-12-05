@@ -1,0 +1,39 @@
+﻿@model MVC_Son.Models.HastaAsi
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Aşı Kaydı Sil</h2>
+
+<h3>Aşağıdaki Aşı kaydı silinecek. Silinsin mi?</h3>
+<div>
+    <dl class="dl">
+        <dt>
+            @Html.DisplayNameFor(model => model.Asi.AsiAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Asi.AsiAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hastalar.TCNO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hastalar.TCNO)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Kaydı Sil" class="btn btn-default" /> |
+            @Html.ActionLink("Geri Dön", "Index")
+        </div>
+    }
+</div>

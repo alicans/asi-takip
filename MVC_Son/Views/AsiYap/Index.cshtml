@@ -1,0 +1,47 @@
+﻿@model IEnumerable<MVC_Son.Models.HastaAsi>
+
+@{
+    ViewBag.Title = "Enjeksiyon Kayıt - Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Enjeksiyon kayıt</h2>
+
+<p>
+    @Html.ActionLink("Yeni Kayıt", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Asi.AsiAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hastalar.HastaAdi)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Hastalar.HastaSoyadi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Asi.AsiAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hastalar.HastaAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hastalar.HastaSoyadi)
+        </td>
+
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id=item.HastaAsiId }) |
+            @Html.ActionLink("Sil", "Delete", new { id=item.HastaAsiId })
+        </td>
+    </tr>
+}
+
+</table>

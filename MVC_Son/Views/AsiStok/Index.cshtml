@@ -1,0 +1,39 @@
+﻿@model IEnumerable<MVC_Son.Models.AsiStok>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Aşı Stokları</h2>
+
+<p>
+    @Html.ActionLink("Yeni Stok Ekle", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Stok)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Asi.AsiAdi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Stok)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Asi.AsiAdi)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id=item.AsiStokId }) |
+            @Html.ActionLink("Sil", "Delete", new { id=item.AsiStokId })
+        </td>
+    </tr>
+}
+
+</table>

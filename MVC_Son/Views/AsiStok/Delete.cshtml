@@ -1,0 +1,39 @@
+﻿@model MVC_Son.Models.AsiStok
+
+@{
+    ViewBag.Title = "Stok Sil";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Stok Sil</h2>
+
+<h3>Aşağıdaki stok bilgisi silinecek. Emin misiniz?</h3>
+<div>
+    <dl class="dl">
+        <dt>
+            @Html.DisplayNameFor(model => model.Stok)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Stok)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Asi.AsiAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Asi.AsiAdi)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Kaydı Sil" class="btn btn-default" /> |
+            @Html.ActionLink("Geri Dön", "Index")
+        </div>
+    }
+</div>

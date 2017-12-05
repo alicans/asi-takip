@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AsiTakipDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Asi">
+    <Key>
+      <PropertyRef Name="AsiId" />
+    </Key>
+    <Property Name="AsiId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AsiAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AsiStoks" Relationship="Self.FK_AsiStok_ToAsi" FromRole="Asi" ToRole="AsiStok" />
+    <NavigationProperty Name="HastaAsis" Relationship="Self.FK_HastaAsi_ToAsi" FromRole="Asi" ToRole="HastaAsi" />
+  </EntityType>
+  <EntityType Name="AsiStok">
+    <Key>
+      <PropertyRef Name="AsiStokId" />
+    </Key>
+    <Property Name="AsiStokId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AsiId" Type="Int32" Nullable="false" />
+    <Property Name="Stok" Type="Int32" />
+    <NavigationProperty Name="Asi" Relationship="Self.FK_AsiStok_ToAsi" FromRole="AsiStok" ToRole="Asi" />
+  </EntityType>
+  <EntityType Name="HastaAsi">
+    <Key>
+      <PropertyRef Name="HastaAsiId" />
+    </Key>
+    <Property Name="HastaAsiId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HastaId" Type="Int32" Nullable="false" />
+    <Property Name="AsiId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Asi" Relationship="Self.FK_HastaAsi_ToAsi" FromRole="HastaAsi" ToRole="Asi" />
+    <NavigationProperty Name="Hastalar" Relationship="Self.FK_HastaAsi_ToHastalar" FromRole="HastaAsi" ToRole="Hastalar" />
+  </EntityType>
+  <EntityType Name="Hastalar">
+    <Key>
+      <PropertyRef Name="HastaId" />
+    </Key>
+    <Property Name="HastaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TCNO" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HastaAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HastaSoyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HastaDtar" Type="DateTime" Precision="0" />
+    <Property Name="HastaBoy" Type="Int32" />
+    <Property Name="HastaKilo" Type="Int32" />
+    <NavigationProperty Name="HastaAsis" Relationship="Self.FK_HastaAsi_ToHastalar" FromRole="Hastalar" ToRole="HastaAsi" />
+  </EntityType>
+  <Association Name="FK_AsiStok_ToAsi">
+    <End Role="Asi" Type="Self.Asi" Multiplicity="1" />
+    <End Role="AsiStok" Type="Self.AsiStok" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Asi">
+        <PropertyRef Name="AsiId" />
+      </Principal>
+      <Dependent Role="AsiStok">
+        <PropertyRef Name="AsiId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HastaAsi_ToAsi">
+    <End Role="Asi" Type="Self.Asi" Multiplicity="1" />
+    <End Role="HastaAsi" Type="Self.HastaAsi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Asi">
+        <PropertyRef Name="AsiId" />
+      </Principal>
+      <Dependent Role="HastaAsi">
+        <PropertyRef Name="AsiId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HastaAsi_ToHastalar">
+    <End Role="Hastalar" Type="Self.Hastalar" Multiplicity="1" />
+    <End Role="HastaAsi" Type="Self.HastaAsi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hastalar">
+        <PropertyRef Name="HastaId" />
+      </Principal>
+      <Dependent Role="HastaAsi">
+        <PropertyRef Name="HastaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AsiTakipDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Asis" EntityType="Self.Asi" />
+    <EntitySet Name="AsiStoks" EntityType="Self.AsiStok" />
+    <EntitySet Name="HastaAsis" EntityType="Self.HastaAsi" />
+    <EntitySet Name="Hastalars" EntityType="Self.Hastalar" />
+    <AssociationSet Name="FK_AsiStok_ToAsi" Association="Self.FK_AsiStok_ToAsi">
+      <End Role="Asi" EntitySet="Asis" />
+      <End Role="AsiStok" EntitySet="AsiStoks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HastaAsi_ToAsi" Association="Self.FK_HastaAsi_ToAsi">
+      <End Role="Asi" EntitySet="Asis" />
+      <End Role="HastaAsi" EntitySet="HastaAsis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HastaAsi_ToHastalar" Association="Self.FK_HastaAsi_ToHastalar">
+      <End Role="Hastalar" EntitySet="Hastalars" />
+      <End Role="HastaAsi" EntitySet="HastaAsis" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

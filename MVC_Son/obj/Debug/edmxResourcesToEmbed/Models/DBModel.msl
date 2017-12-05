@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AsiTakipDBModelStoreContainer" CdmEntityContainer="AsiTakipDBEntities">
+    <EntitySetMapping Name="Asis">
+      <EntityTypeMapping TypeName="AsiTakipDBModel.Asi">
+        <MappingFragment StoreEntitySet="Asi">
+          <ScalarProperty Name="AsiId" ColumnName="AsiId" />
+          <ScalarProperty Name="AsiAdi" ColumnName="AsiAdi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AsiStoks">
+      <EntityTypeMapping TypeName="AsiTakipDBModel.AsiStok">
+        <MappingFragment StoreEntitySet="AsiStok">
+          <ScalarProperty Name="AsiStokId" ColumnName="AsiStokId" />
+          <ScalarProperty Name="AsiId" ColumnName="AsiId" />
+          <ScalarProperty Name="Stok" ColumnName="Stok" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HastaAsis">
+      <EntityTypeMapping TypeName="AsiTakipDBModel.HastaAsi">
+        <MappingFragment StoreEntitySet="HastaAsi">
+          <ScalarProperty Name="HastaAsiId" ColumnName="HastaAsiId" />
+          <ScalarProperty Name="HastaId" ColumnName="HastaId" />
+          <ScalarProperty Name="AsiId" ColumnName="AsiId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Hastalars">
+      <EntityTypeMapping TypeName="AsiTakipDBModel.Hastalar">
+        <MappingFragment StoreEntitySet="Hastalar">
+          <ScalarProperty Name="HastaId" ColumnName="HastaId" />
+          <ScalarProperty Name="TCNO" ColumnName="TCNO" />
+          <ScalarProperty Name="HastaAdi" ColumnName="HastaAdi" />
+          <ScalarProperty Name="HastaSoyadi" ColumnName="HastaSoyadi" />
+          <ScalarProperty Name="HastaDtar" ColumnName="HastaDtar" />
+          <ScalarProperty Name="HastaBoy" ColumnName="HastaBoy" />
+          <ScalarProperty Name="HastaKilo" ColumnName="HastaKilo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

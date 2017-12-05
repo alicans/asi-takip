@@ -1,0 +1,33 @@
+﻿@model IEnumerable<MVC_Son.Models.Asi>
+
+@{
+    ViewBag.Title = "Aşı Ekle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Aşılar</h2>
+
+<p>
+    @Html.ActionLink("Yeni Aşı Ekle", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AsiAdi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AsiAdi)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id=item.AsiId }) |
+            @Html.ActionLink("Sil", "Delete", new { id=item.AsiId })
+        </td>
+    </tr>
+}
+
+</table>
